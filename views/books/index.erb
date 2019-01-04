@@ -1,0 +1,28 @@
+<form action="/books" method="get">
+<label for="book-searchy">Search: </label>
+<input type="search" name="q" id="book-searchy">
+<button type="submit">Submit</button>
+
+<% if @books.empty?  %>
+
+<p> no search results found matching your criteria </p>
+
+<% else %>
+
+<% @books.each do |book| %>
+
+<div id="book-info">
+    <%= img_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) if book["volumeInfo"]["imageLinks"] %>
+    <p> <%= book["volumeInfo"]["title"] %></p>
+    <p> <%= book["volumeInfo"]["authors"] %></p>
+    <p> <%= book["volumeInfo"]["description"] %></p>
+</div>
+
+<% end %>
+
+<% end %>
+
+</form>
+
+
+
